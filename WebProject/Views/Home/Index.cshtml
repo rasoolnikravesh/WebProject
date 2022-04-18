@@ -1,0 +1,26 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+
+<p>Index</p>
+
+@{
+    var posts = ViewData["posts"] as List<Models.Post>;
+    if (posts == null)
+    {
+
+        <p>null</p>
+    }
+    else
+    {
+        foreach (var post in posts)
+        {
+            <p>@post.Id</p>
+            <p>@post.Name</p>
+            <p>@post.Text</p>
+        }
+    }
+}
