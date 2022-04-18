@@ -3,32 +3,32 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Models.Base
 {
-	public abstract class Entity : object
-	{
-		public Entity() : base()
-		{
-			Id = Guid.NewGuid();
-			InsertDateTime = Utility.Now;
-		
-		}
-		
-		// **********
-		[Key]
+    public abstract class Entity : object
+    {
+        public Entity() : base()
+        {
+            Id = Guid.NewGuid();
+            InsertDateTime = Utility.Now;
 
-		[DatabaseGenerated
-			(DatabaseGeneratedOption.None)]
+        }
 
-		[Display
+        // **********
+        [Key]
+
+        [DatabaseGenerated
+            (DatabaseGeneratedOption.None)]
+
+        [Display
             (ResourceType = typeof(Resources.DataDictionary),
-			Name = nameof(Resources.DataDictionary.Id))]
-		public Guid Id { get; set; }
-		// **********
+            Name = nameof(Resources.DataDictionary.Id))]
+        public Guid Id { get; set; }
+        // **********
 
-		// **********
-		[Display
+        // **********
+        [Display
             (ResourceType = typeof(Resources.DataDictionary),
-			Name = nameof(Resources.DataDictionary.InsertDateTime))]
-		public DateTime InsertDateTime { get; set; }
-		// **********
-	}
+            Name = nameof(Resources.DataDictionary.InsertDateTime))]
+        public DateTime InsertDateTime { get; set; }
+        // **********
+    }
 }

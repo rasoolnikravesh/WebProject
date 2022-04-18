@@ -123,4 +123,7 @@
   <data name="InsertDateTime" xml:space="preserve">
     <value>InsertDateTime</value>
   </data>
+  <data name="Name" xml:space="preserve">
+    <value>Name</value>
+  </data>
 </root>

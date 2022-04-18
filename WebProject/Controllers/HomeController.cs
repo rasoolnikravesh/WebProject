@@ -1,9 +1,10 @@
 ﻿using Data;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebProject.Controllers
 {
-    public class HomeController : Infrastructure.BaseControllerWithDatabase
+    public class HomeController : Infrastructure.BaseController
     {
         public HomeController(IUnitOfWork unitOfWork) : base(unitOfWork)
         {
@@ -30,6 +31,11 @@ namespace WebProject.Controllers
             };
             UnitOfWork.PostRepository.Insert(post);
             UnitOfWork.Save();
+            return RedirectToAction(nameof(Index));
+        }
+        public IActionResult test()
+        {
+
             return RedirectToAction(nameof(Index));
         }
     }

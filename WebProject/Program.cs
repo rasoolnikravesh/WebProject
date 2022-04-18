@@ -7,6 +7,7 @@ var connectionString = builder.Configuration.GetConnectionString("ApplicationCon
 //builder.Services.AddDbContext<Data.DatabaseContext>(options => options.UseSqlServer(connectionString: connectionString));
 
 
+
 builder.Services.AddTransient<Data.IUnitOfWork, Data.IUnitOfWork>(sp =>
 {
     Data.Tools.Options options =
