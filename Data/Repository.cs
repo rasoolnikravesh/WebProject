@@ -7,7 +7,6 @@ public class Repository<T> : Base.Repository<T> where T : Models.Base.Entity
     {
     }
 
-
     public override void Insert(T entity)
     {
         if (entity == null)
