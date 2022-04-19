@@ -9,16 +9,16 @@ var connectionString = builder.Configuration.GetConnectionString("ApplicationCon
 
 
 
-	// **************************************************
-	//ApplicationSettings.ConnectionStrings connectionStrings = new();
+// **************************************************
+//ApplicationSettings.ConnectionStrings connectionStrings = new();
 
-	//configuration
-	//	.GetSection(nameof(ApplicationSettings.ConnectionStrings))
-	//	.Bind(connectionStrings);
+//configuration
+//	.GetSection(nameof(ApplicationSettings.ConnectionStrings))
+//	.Bind(connectionStrings);
 
-	//string connectionString =
-	//	connectionStrings.GetApplicationConnectionString();
-	// **************************************************
+//string connectionString =
+//	connectionStrings.GetApplicationConnectionString();
+// **************************************************
 
 builder.Services.AddConfigContext(connectionString);
 
@@ -26,10 +26,10 @@ builder.Services.AddConfigContext(connectionString);
 builder.Services.AddTransient<Data.IUnitOfWork, Data.IUnitOfWork>(sp =>
 {
     Data.Tools.Options options = new()
-                    {
-                        Provider = Data.Tools.Enums.Provider.SqlServer,
-                        ConnectionString = connectionString
-                    };
+    {
+        Provider = Data.Tools.Enums.Provider.SqlServer,
+        ConnectionString = connectionString
+    };
 
     return new Data.UnitofWork(options: options);
 });
@@ -54,7 +54,7 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
-app.UseAuthentication(); ;
+app.UseAuthentication();
 
 app.UseAuthorization();
 

@@ -29,10 +29,7 @@ namespace Data.Settings
 
 					option.SignIn.RequireConfirmedAccount = true;
 				}).AddRoles<Models.ApplicationRole>();
-					// .Add
-					//.AddSignInManager<Models.User>()
-					//.AddEntityFrameworkStores<Data.DatabaseContext>();
-
+					
 			builder =
 				new IdentityBuilder
 				(builder.UserType, typeof(Models.ApplicationRole), builder.Services);
