@@ -16,12 +16,12 @@ public class ApplicationUser : IdentityUser<Guid>
     [Required]
     public string Name { get; set; } = string.Empty;
 
-    //[Display(ResourceType = typeof(Resources.DataDictionary),
-    //    Name = nameof(Resources.DataDictionary.Name))]
-    //[MaxLength(Constant.Length.GENERAL_NAME)]
-    //[Required]
-    //public string LastName { get; set; } = string.Empty;
+    [Display(ResourceType = typeof(Resources.DataDictionary),
+        Name = nameof(Resources.DataDictionary.Name))]
+    [MaxLength(Constant.Length.GENERAL_NAME)]
+    [Required]
+    public string LastName { get; set; } = string.Empty;
 
-
+    public ICollection<Post>? Posts { get; set; }
 }
 

@@ -13,21 +13,34 @@ namespace Data
         {
         }
 
-		private IPostRepository? _postRepository;
+        private IPostRepository? _postRepository;
 
-		public IPostRepository PostRepository
-		{
-			get
-			{
-				if (_postRepository == null)
-				{
-					_postRepository =
-						new PostRepository(DatabaseContext);
-				}
+        public IPostRepository PostRepository
+        {
+            get
+            {
+                if (_postRepository == null)
+                {
+                    _postRepository =
+                        new PostRepository(DatabaseContext);
+                }
 
-				return _postRepository;
-			}
-		}
+                return _postRepository;
+            }
+        }
 
+        private ICategoryRepository? _categoryRepository;
+
+        public ICategoryRepository CategoryRepository
+        {
+            get
+            {
+                if (_categoryRepository == null)
+                {
+                    _categoryRepository = new CategoryRepository(DatabaseContext);
+                }
+                return _categoryRepository;
+            }
+        }
     }
 }

@@ -9,8 +9,9 @@ namespace ViewModels;
 
 public class InsertPostViewModel
 {
+
     [NotNull]
-    public string Name { get; set; }
-    public string? Text { get; set; }
+    public string Name { get; set; } = default!;
+    public string Text { get; set; } = default!;
 }
 

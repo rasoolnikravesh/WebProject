@@ -27,13 +27,13 @@ namespace WebProject.Controllers
         {
             return View();
         }
-         
+
         public IActionResult InsertConfirm(ViewModels.InsertPostViewModel model)
         {
             Models.Post post = new Models.Post
             {
-                Name = model.Name,
-                Text = model.Text,
+                Title = model.Name,
+                Content = model.Text,
             };
             UnitOfWork.PostRepository.Insert(post);
             UnitOfWork.Save();

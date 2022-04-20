@@ -90,12 +90,14 @@ public class Repository<T> : object, IRepository<T> where T : Models.Base.Entity
 
     public virtual T GetById(System.Guid id)
     {
-        return DbSet.Find(keyValues: id);
+        var resault = DbSet.Find(keyValues: id);
+        return (resault != null) ? resault : default!;
     }
 
     public virtual async Task<T> GetByIdAsync(System.Guid id)
     {
-        return await DbSet.FindAsync(keyValues: id);
+        var resault = await DbSet.FindAsync(keyValues: id);
+        return resault != null ? resault : default!;
     }
 
     public virtual bool DeleteById(Guid id)
