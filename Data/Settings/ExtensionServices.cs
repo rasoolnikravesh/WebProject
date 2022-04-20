@@ -7,35 +7,38 @@ namespace Data.Settings
 {
     public static class ExtensionServices
     {
-		public static void AddConfigContext(this IServiceCollection services, string connectionString)
+        public static void AddConfigContext(this IServiceCollection services, string connectionString)
         {
-			services.AddDbContext<Data.DatabaseContext>(opts =>
-			{
-				opts.UseSqlServer(connectionString);
-			});
-		}
+            services.AddDbContext<Data.DatabaseContext>(opts =>
+            {
+                opts.UseSqlServer(connectionString);
+            });
+        }
 
         public static void AddConfigIdentity(this IServiceCollection services)
-		{
-			IdentityBuilder builder =
-				services.AddIdentity<Models.ApplicationUser, Models.ApplicationRole>(option =>
-				{
-					option.Password.RequireDigit = false;
-					option.Password.RequireLowercase = false;
-					option.Password.RequireUppercase = false;
-					option.Password.RequireNonAlphanumeric = false;
-					option.Password.RequiredLength = 5;
-					option.User.RequireUniqueEmail = true;
+        {
+            IdentityBuilder builder =
+                services.AddIdentity<Models.ApplicationUser, Models.ApplicationRole>(option =>
+                {
+                    option.Password.RequireDigit = false;
+                    option.Password.RequireLowercase = false;
+                    option.Password.RequireUppercase = false;
+                    option.Password.RequireNonAlphanumeric = false;
+                    option.Password.RequiredLength = 5;
+                    option.User.RequireUniqueEmail = true;
 
-					option.SignIn.RequireConfirmedAccount = true;
-				}).AddRoles<Models.ApplicationRole>();
-					
-			builder =
-				new IdentityBuilder
-				(builder.UserType, typeof(Models.ApplicationRole), builder.Services);
+                    option.SignIn.RequireConfirmedAccount = true;
+                    option.Lockout.MaxFailedAccessAttempts = 3;
+                    option.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(1);
 
-			builder.AddEntityFrameworkStores<Data.DatabaseContext>()
-				.AddDefaultTokenProviders();
-		}
-	}
+                }).AddRoles<Models.ApplicationRole>();
+
+            builder =
+                new IdentityBuilder
+                (builder.UserType, typeof(Models.ApplicationRole), builder.Services);
+
+            builder.AddEntityFrameworkStores<Data.DatabaseContext>()
+                .AddDefaultTokenProviders();
+        }
+    }
 }
