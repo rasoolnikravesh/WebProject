@@ -30,6 +30,13 @@ namespace WebProject.Controllers
                     EmailConfirmed = true
                 };
                 IdentityResult resualt = await UserManager.CreateAsync(user, model.Password);
+                var users = UserManager.Users.Count();
+                if (users == 1)
+                {
+                    var result = await UserManager.IsInRoleAsync(user, "admin");
+                    if (!result)
+                        await UserManager.AddToRoleAsync(user, "admin");
+                }
 
                 if (resualt.Succeeded)
                 {

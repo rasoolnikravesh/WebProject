@@ -6,8 +6,8 @@ public interface IUnitOfWork : Base.IUnitOfWork
     IPostRepository PostRepository { get; }
     //// **********
 
-    //// **********
-    //IApplicationRepository ApplicationRepository { get; }
+    // **********
+    ICategoryRepository CategoryRepository { get; }
     // **********
 }
 

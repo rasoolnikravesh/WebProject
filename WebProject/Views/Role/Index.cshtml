@@ -1,0 +1,36 @@
+﻿@{
+    ViewData["Title"] = "Index";
+    var Roles = ViewData["Roles"] as List<ApplicationRole>;
+}
+
+@model ViewModels.Role.InsertRole;
+
+<div class="container">
+
+    <h1>Roles</h1>
+
+    <form asp-controller="Role" asp-action="InsertRole" method="post">
+        <div class="">
+            <div class="col-3">
+                <input asp-for="Name" class="" />
+            </div>
+            <div class="col-3">
+
+                <button class="btn btn-outline-info" type="submit">@Resources.Buttons.RoleSubmit</button>
+            </div>
+        </div>
+    </form>
+    @{
+        if (Roles != null)
+        {
+            <div class="container">
+                <ul class="list-group">
+                    @foreach (var item in Roles)
+                    {
+                        <li class="list-group-item">@item.Name</li>
+                    }
+                </ul>
+            </div>
+        }
+    }
+</div>

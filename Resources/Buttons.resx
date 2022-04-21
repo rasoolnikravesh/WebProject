@@ -126,6 +126,9 @@
   <data name="Register" xml:space="preserve">
     <value>Register</value>
   </data>
+  <data name="RoleSubmit" xml:space="preserve">
+    <value>Submit Role</value>
+  </data>
   <data name="UnRegistered" xml:space="preserve">
     <value>Have not account yet?</value>
   </data>

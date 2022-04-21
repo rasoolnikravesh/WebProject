@@ -4,23 +4,28 @@
 @{
 }
 
+<div class="container">
 
-<p>Index</p>
 
-@{
-    //var posts = ViewData["posts"] as List<Models.Post>;
-    //if (posts == null)
-    //{
+    <h1>@Resources.Messages.IndexPage</h1>
 
-    //    <p>null</p>
-    //}
-    //else
-    //{
-    //    foreach (var post in posts)
-    //    {
-    //        <p>@post.Id</p>
-    //        <p>@post.Name</p>
-    //        <p>@post.Text</p>
-    //    }
-    //}
-}
+    @{
+        var posts = ViewData["posts"] as List<Models.Post>;
+        if (posts == null)
+        {
+
+            <p>null</p>
+        }
+        else
+        {
+            <div class="border">
+                @foreach (var post in posts)
+                {
+                    <p>@post.Id</p>
+                    <p>@post.Title</p>
+                    <p>@post.Content</p>
+                }
+            </div>
+        }
+    }
+</div>

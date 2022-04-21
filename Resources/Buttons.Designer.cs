@@ -88,6 +88,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Submit Role.
+        /// </summary>
+        public static string RoleSubmit {
+            get {
+                return ResourceManager.GetString("RoleSubmit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Have not account yet?.
         /// </summary>
         public static string UnRegistered {

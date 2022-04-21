@@ -120,6 +120,9 @@
   <data name="EmailIsUsed" xml:space="preserve">
     <value>Email Already Taken</value>
   </data>
+  <data name="IndexPage" xml:space="preserve">
+    <value>Home</value>
+  </data>
   <data name="UserIsLockOuted" xml:space="preserve">
     <value>your Account is lockoted for 5 Minets</value>
   </data>

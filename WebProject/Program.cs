@@ -5,23 +5,12 @@ using Microsoft.EntityFrameworkCore;
 var builder = WebApplication.CreateBuilder(args);
 var connectionString = builder.Configuration.GetConnectionString("ApplicationContextConnection"); ;
 
-//builder.Services.AddDbContext<Data.DatabaseContext>(options => options.UseSqlServer(connectionString: connectionString));
-
-
-
-// **************************************************
-//ApplicationSettings.ConnectionStrings connectionStrings = new();
-
-//configuration
-//	.GetSection(nameof(ApplicationSettings.ConnectionStrings))
-//	.Bind(connectionStrings);
-
-//string connectionString =
-//	connectionStrings.GetApplicationConnectionString();
-// **************************************************
+builder.Services.AddAuthorization(op =>
+{
+    op.AddPolicy("admin", x => x.RequireRole("admin"));
+});
 
 builder.Services.AddConfigContext(connectionString);
-
 
 builder.Services.AddTransient<Data.IUnitOfWork, Data.IUnitOfWork>(sp =>
 {
@@ -49,6 +38,7 @@ if (!app.Environment.IsDevelopment())
     // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
+
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();

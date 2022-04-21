@@ -2,49 +2,28 @@
 using Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 
 namespace WebProject.Controllers
 {
+    [Authorize]
     public class HomeController : Infrastructure.ControllerWithIdentity
     {
         public HomeController(IUnitOfWork unitOfWork, UserManager<ApplicationUser> userManager, RoleManager<ApplicationRole> roleManager, SignInManager<ApplicationUser> signInManager) : base(unitOfWork, userManager, roleManager, signInManager)
         {
         }
 
+        [AllowAnonymous]
         public IActionResult Index()
         {
-            ViewData["users"] = UserManager.Users.ToList();
-
-
-            var post = UnitOfWork.PostRepository.GetAll();
+            var post = UnitOfWork.PostRepository.GetLast10Posts();
             if (post != null)
                 ViewData["posts"] = post;
             return View();
         }
 
-        [HttpGet]
-        public IActionResult AddPosts()
-        {
-            return View();
-        }
 
-        public IActionResult InsertConfirm(ViewModels.InsertPostViewModel model)
-        {
-            Models.Post post = new Models.Post
-            {
-                Title = model.Name,
-                Content = model.Text,
-            };
-            UnitOfWork.PostRepository.Insert(post);
-            UnitOfWork.Save();
-            return RedirectToAction(nameof(Index));
-        }
-
-        public IActionResult test()
-        {
-
-            return RedirectToAction(nameof(Index));
-        }
+        
 
     }
 }

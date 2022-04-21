@@ -70,6 +70,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Home.
+        /// </summary>
+        public static string IndexPage {
+            get {
+                return ResourceManager.GetString("IndexPage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to your Account is lockoted for 5 Minets.
         /// </summary>
         public static string UserIsLockOuted {

@@ -1,0 +1,22 @@
+﻿@{
+    ViewData["Title"] = "Index";
+    var data = ViewData["Posts"] as List<Models.Post>;
+}
+
+<h1>Blog</h1>
+<div>
+
+    @{
+        foreach (var post in data ?? new List<Post> { new Post { Content = "" } })
+        {
+            <div>
+                <h3>@post.Title</h3>
+
+                <div>
+                    <p>@post.Content</p>
+                </div>
+            </div>
+        }
+
+    }
+</div>

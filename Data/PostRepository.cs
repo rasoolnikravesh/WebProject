@@ -1,17 +1,16 @@
 ﻿using Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Data
+namespace Data;
+
+public class PostRepository : Repository<Models.Post>, IPostRepository
 {
-    public class PostRepository : Repository<Models.Post>, IPostRepository
+    internal PostRepository(DatabaseContext databaseContext) : base(databaseContext)
     {
-        internal PostRepository(DatabaseContext databaseContext) : base(databaseContext)
-        {
-        }
-        
+    }
+
+    public IList<Post> GetLast10Posts()
+    {
+        var posts = DatabaseContext.Posts.OrderByDescending(p => p.InsertDateTime).Take(10).ToList();
+        return posts;
     }
 }
