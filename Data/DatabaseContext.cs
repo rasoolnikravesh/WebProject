@@ -19,7 +19,8 @@ internal class DatabaseContext : IdentityDbContext<Models.ApplicationUser, Model
 
         builder.Entity<IdentityUserRole<Guid>>().HasKey(p => new { p.RoleId, p.UserId });
 
-        builder.Entity<Models.Post>().HasOne<Models.ApplicationUser>(p => p.User).WithMany(u => u.Posts);
+        builder.Entity<Models.ApplicationUser>().HasMany<Models.Post>(u => u.Posts).WithOne(p => p.User)
+            .HasForeignKey(f => f.UserId);
 
         builder.Entity<Models.Category>().HasMany<Models.Post>(category => category.Posts).WithMany(post => post.Categories);
         // Customize the ASP.NET Identity model and override the defaults if needed.

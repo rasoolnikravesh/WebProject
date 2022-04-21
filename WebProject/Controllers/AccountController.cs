@@ -35,7 +35,12 @@ namespace WebProject.Controllers
                 {
                     var result = await UserManager.IsInRoleAsync(user, "admin");
                     if (!result)
+                    {
+                        var role = await RoleManager.FindByNameAsync("admin");
+                        if (role == null)
+                            await RoleManager.CreateAsync(new ApplicationRole { Name = "admin" });
                         await UserManager.AddToRoleAsync(user, "admin");
+                    }
                 }
 
                 if (resualt.Succeeded)

@@ -22,6 +22,6 @@ public class ApplicationUser : IdentityUser<Guid>
     [Required]
     public string LastName { get; set; } = string.Empty;
 
-    public ICollection<Post>? Posts { get; set; }
+    public virtual ICollection<Post> Posts { get; set; } = default!;
 }
 

@@ -9,9 +9,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Models", "Model\Models.cspr
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Data", "Data\Data.csproj", "{16E75EFF-5B85-46C6-9535-48BF8AAF0293}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ViewModels", "ViewModels\ViewModels.csproj", "{E8F8A80A-4C23-4502-8DBE-18A240C5C2A9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ViewModels", "ViewModels\ViewModels.csproj", "{E8F8A80A-4C23-4502-8DBE-18A240C5C2A9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Resources", "Resources\Resources.csproj", "{173778D3-A5D3-48D8-83E8-2FC6C56CC208}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Resources", "Resources\Resources.csproj", "{173778D3-A5D3-48D8-83E8-2FC6C56CC208}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mappers", "Mappers\Mappers.csproj", "{06ADF9CC-98B2-4499-9434-038DB7A3B55F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{173778D3-A5D3-48D8-83E8-2FC6C56CC208}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{173778D3-A5D3-48D8-83E8-2FC6C56CC208}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{173778D3-A5D3-48D8-83E8-2FC6C56CC208}.Release|Any CPU.Build.0 = Release|Any CPU
+		{06ADF9CC-98B2-4499-9434-038DB7A3B55F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{06ADF9CC-98B2-4499-9434-038DB7A3B55F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{06ADF9CC-98B2-4499-9434-038DB7A3B55F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{06ADF9CC-98B2-4499-9434-038DB7A3B55F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

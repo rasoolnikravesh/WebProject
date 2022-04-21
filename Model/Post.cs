@@ -24,9 +24,11 @@ namespace Models
         public bool Published { get; set; } = default!;
 
         [System.ComponentModel.DataAnnotations.Display(ResourceType = typeof(Resources.DataDictionary), Name = nameof(Resources.DataDictionary.PublishedAt))]
-        public DateTime PublishedAt { get; set; }
+        public DateTime? PublishedAt { get; set; }
 
-        public Models.ApplicationUser User { get; set; } = null!;
+        public Guid? UserId { get; set; }
+
+        public Models.ApplicationUser? User { get; set; }
 
         public ICollection<Category>? Categories { get; set; }
     }
