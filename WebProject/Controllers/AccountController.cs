@@ -43,6 +43,7 @@ namespace WebProject.Controllers
                     }
                 }
 
+
                 if (resualt.Succeeded)
                 {
                     RedirectToAction(actionName: "Index", controllerName: nameof(HomeController));
@@ -110,12 +111,17 @@ namespace WebProject.Controllers
             return RedirectToAction(controllerName: "home", actionName: "Index");
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> IsValidEmail(string email)
         {
             var user = await UserManager.FindByEmailAsync(email);
             if (user == null) return Json(data: true);
             return Json(Resources.Messages.EmailIsUsed);
         }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> IsValidUsername(string Username)
         {
             var user = await UserManager.FindByNameAsync(Username);

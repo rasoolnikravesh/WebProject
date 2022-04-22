@@ -1,22 +1,25 @@
 using Data.Settings;
+using Microsoft.AspNetCore.Components.RenderTree;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
-var connectionString = builder.Configuration.GetConnectionString("ApplicationContextConnection"); ;
+var connectionString = builder.Configuration.GetConnectionString("ApplicationContextConnection");
+
 
 builder.Services.AddAuthorization(op =>
 {
     op.AddPolicy("admin", x => x.RequireRole("admin"));
+    
 });
 
 // add auto mapper
-builder.Services.AddAutoMapper(typeof(Mappers.AddPostMapperProfile));
+//builder.Services.AddAutoMapper(typeof(Mappers.AddPostMapperProfile));
 
 builder.Services.AddAutoMapper(am =>
 {
     am.AddProfile<Mappers.AddPostMapperProfile>();
-    
+
 });
 
 builder.Services.AddConfigContext(connectionString);
