@@ -1,17 +1,44 @@
 ﻿@{
     ViewData["Title"] = "Index";
+    var posts = ViewData["Posts"] as List<Post>;
+    TempData["active"] = "ManageBlog";
 }
 
-<div class="container">
+<div>
+
+
     <h1>WellCome admin</h1>
 
     <a class="btn btn-primary" asp-controller="ManageBlog" asp-action="AddPost">Add Post</a>
 
-    <p>Posts</p>
     <div class="container">
+        <h4>Posts:</h4>
         @{
-            
+            if (posts != null)
+            {
+                <div class="d-flex flex-column">
+                    @foreach (var post in posts)
+                    {
+
+                        <div class="card p-2 mb-4" style="">
+                            <div class="card-body">
+                                <h5 class="card-title">@post.Title</h5>
+                                <h6 class="card-subtitle mb-2 text-muted">@post.Summary</h6>
+                                <p class="card-text">@post.Content</p>
+                                <small>@post.InsertDateTime.ToString()</small>
+                                <a asp-controller="ManageBlog" asp-action="Delete" asp-route-id="@post.Id" class="card-link">Delete</a>
+                            </div>
+                        </div>
+
+                    }
+                </div>
+
+            }
+            else
+            {
+
+            }
         }
     </div>
-</div>
 
+</div>

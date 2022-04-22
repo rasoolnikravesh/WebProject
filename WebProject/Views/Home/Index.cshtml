@@ -2,6 +2,7 @@
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
+    TempData["active"] = "Home";
 }
 
 <div class="container">
@@ -18,13 +19,23 @@
         }
         else
         {
-            <div class="border">
+            <div class="d-flex flex-column">
                 @foreach (var post in posts)
                 {
-                    <p>@post.Id</p>
-                    <p>@post.Title</p>
-                    <p>@post.Content</p>
+
+                    <div class="card p-2 mb-4" style="">
+                        <div class="card-body">
+                            <h5 class="card-title">@post.Title</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">@post.Summary</h6>
+                            <p class="card-text">@post.Content</p>
+                            <small>@post.InsertDateTime.ToString()</small>
+                        </div>
+                    </div>
+
                 }
+                <form asp-controller="Blog" asp-action="Index">
+                    <button class="btn btn-primary" type="submit">@Resources.Buttons.MorePost</button>
+                </form>
             </div>
         }
     }

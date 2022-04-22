@@ -126,6 +126,9 @@
   <data name="LogOut" xml:space="preserve">
     <value>Log Out</value>
   </data>
+  <data name="MorePost" xml:space="preserve">
+    <value>More Post...</value>
+  </data>
   <data name="Register" xml:space="preserve">
     <value>Register</value>
   </data>

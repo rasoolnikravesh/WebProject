@@ -88,6 +88,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to More Post....
+        /// </summary>
+        public static string MorePost {
+            get {
+                return ResourceManager.GetString("MorePost", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Register.
         /// </summary>
         public static string Register {

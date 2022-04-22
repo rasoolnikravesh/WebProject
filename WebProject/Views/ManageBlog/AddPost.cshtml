@@ -8,7 +8,7 @@
 
     <h1>AddPost</h1>
 
-    <form asp-action="AddPost" asp-controller="ManageBlog" method="post">
+    <form asp-action="AddPost" asp-controller="ManageBlog" method="post" >
         <div class="form-group">
             <label asp-for="Title"></label>
             <input type="text" asp-for="Title" class="form-control" placeholder="">
@@ -17,7 +17,7 @@
             <label asp-for="Summary"></label>
             <textarea asp-for="Summary" class="form-control"></textarea>
         </div>
-        <div class="form-group">
+        <div class="form-group mb-2">
             <label class="" asp-for="Content"></label>
             <textarea asp-for="Content" class="form-control"></textarea>
         </div>

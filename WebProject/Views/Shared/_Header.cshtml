@@ -1,50 +1,88 @@
-﻿@{
-}
-@inject SignInManager<ApplicationUser> SigninManager
+﻿@inject SignInManager<ApplicationUser> SigninManager
 
+
+@{
+
+}
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
         <a class="navbar-brand" href="#">Navbar</a>
-        <button class="navbar-toggler"
-                type="button"
-                data-mdb-toggle="collapse"
-                data-mdb-target="#navbarNav"
-                aria-controls="navbarNav"
-                aria-expanded="false"
-                aria-label="Toggle navigation">
-            <i class="fas fa-bars"></i>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Features</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Pricing</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link disabled">Disabled</a>
-                </li>
-            </ul>
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    @{
-                        if (SigninManager.IsSignedIn(User))
-                        {
-                            <form asp-controller="Account" asp-action="LogOut" method="post">
-                                <button  type="submit" class="btn nav-link">@Resources.Buttons.LogOut</button>
-                            </form>
-                        }
-                        else
-                        {
-                            <a asp-controller="Account" class="" asp-action="Login">@Resources.Buttons.Login</a>
-                        }
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                @{
+                    var active = TempData["active"] as string;
+                    if (active == "Home")
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link active" asp-action="Index" asp-controller="Home">Home</a>
+                        </li>
                     }
+                    else
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Home" asp-action="Index">Home</a>
+                        </li>
+                    }
+                    if (active == "Blog")
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link active" asp-controller="Blog" asp-action="Index">Blog</a>
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Blog" asp-action="Index">Blog</a>
+                        </li>
+                    }
+                    if (active == "ManageBlog")
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link active" asp-controller="ManageBlog" asp-action="Index">ManageBlog</a>
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="ManageBlog" asp-action="Index">ManageBlog</a>
+                        </li>
+                    }
+                }
+
+                @*<li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                    data-bs-toggle="dropdown" aria-expanded="false">
+                    Dropdown
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <li><a class="dropdown-item" href="#">Action</a></li>
+                    <li><a class="dropdown-item" href="#">Another action</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                    </ul>
+                    </li>*@
+
+                <li class="nav-item">
+                    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
                 </li>
             </ul>
+            @{
+                if (SigninManager.IsSignedIn(User))
+                {
+                    <form asp-controller="Account" asp-action="LogOut" method="post">
+                        <button type="submit" class="btn nav-link">@Resources.Buttons.LogOut</button>
+                    </form>
+                }
+                else
+                {
+                    <a asp-controller="Account" class="" asp-action="Login">@Resources.Buttons.Login</a>
+                }
+            }
         </div>
     </div>
 </nav>

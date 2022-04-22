@@ -11,7 +11,7 @@ namespace WebProject.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var data = await UnitOfWork.GetRepository<Models.Category>().GetAllAsync();
+            var data = await UnitOfWork.GetRepository<Models.Post>().GetAllAsync();
 
             ViewData["Posts"] = data;
             return View();

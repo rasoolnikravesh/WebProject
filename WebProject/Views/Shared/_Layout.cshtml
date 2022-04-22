@@ -2,18 +2,31 @@
 <head>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
-    <script src="~/lib/jquery/dist/jquery.js"></script>
-    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
-    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+
 
 </head>
-<body style="min-height:100vh;">
+<body>
+    <div class="mh-100 position-relative ">
 
-    <partial name="_Header" />
 
-    @RenderBody()
+        <partial name="_Header" />
 
-    <partial name="_Footer" />
+        <div class="container">
+            @RenderBody()
+        </div>
+        <button type="button"
+                class="btn btn-danger btn-floating btn-lg"
+                id="btn-back-to-top">
+            <i class="fas fa-arrow-up">s</i>
+        </button>
+        <partial name="_Footer" />
+    </div>
 
+    <script src="~/js/site.js"> </script>
+
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/lib/bootstrap/js/bootstrap.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
 </body>
 </html>

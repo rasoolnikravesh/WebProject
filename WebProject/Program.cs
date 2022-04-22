@@ -9,9 +9,14 @@ builder.Services.AddAuthorization(op =>
 {
     op.AddPolicy("admin", x => x.RequireRole("admin"));
 });
+
+// add auto mapper
+builder.Services.AddAutoMapper(typeof(Mappers.AddPostMapperProfile));
+
 builder.Services.AddAutoMapper(am =>
 {
     am.AddProfile<Mappers.AddPostMapperProfile>();
+    
 });
 
 builder.Services.AddConfigContext(connectionString);

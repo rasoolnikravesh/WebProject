@@ -1,22 +1,32 @@
 ﻿@{
     ViewData["Title"] = "Index";
     var data = ViewData["Posts"] as List<Models.Post>;
+    TempData["active"] = "Blog";
 }
 
-<h1>Blog</h1>
+
 <div>
 
-    @{
-        foreach (var post in data ?? new List<Post> { new Post { Content = "" } })
-        {
-            <div>
-                <h3>@post.Title</h3>
+    <h1>Blog</h1>
+    <div>
 
-                <div>
-                    <p>@post.Content</p>
-                </div>
+        @{
+            <div class="d-flex flex-column">
+                @foreach (var post in data)
+                {
+
+                    <div class="card p-2 mb-4" style="">
+                        <div class="card-body">
+                            <h5 class="card-title">@post.Title</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">@post.Summary</h6>
+                            <p class="card-text">@post.Content</p>
+                            <small>@post.InsertDateTime.ToString()</small>
+                        </div>
+                    </div>
+
+                }
             </div>
-        }
 
-    }
+        }
+    </div>
 </div>

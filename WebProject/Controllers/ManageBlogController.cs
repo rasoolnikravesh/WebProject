@@ -13,8 +13,9 @@ namespace WebProject.Controllers
         {
         }
         [HttpGet]
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
+            ViewData["Posts"] = await UnitOfWork.PostRepository.GetAllAsync();
             return View();
         }
 
@@ -23,7 +24,7 @@ namespace WebProject.Controllers
         {
             return View();
         }
-        
+
         [HttpPost]
         public async Task<IActionResult> AddPost(ViewModels.MangeBlog.AddPostViewModel model, [FromServices] AutoMapper.IMapper mapper)
         {
@@ -31,6 +32,15 @@ namespace WebProject.Controllers
             post.UserId = (await UserManager.FindByNameAsync(User.Identity?.Name)).Id;
             await UnitOfWork.PostRepository.InsertAsync(post);
             await UnitOfWork.SaveAsync();
+            return RedirectToAction(nameof(Index));
+        }
+
+        [HttpGet]
+        public IActionResult Delete(Guid id)
+        {
+            var post = UnitOfWork.PostRepository.GetById(id);
+            UnitOfWork.PostRepository.Delete(post);
+            UnitOfWork.Save();
             return RedirectToAction(nameof(Index));
         }
     }

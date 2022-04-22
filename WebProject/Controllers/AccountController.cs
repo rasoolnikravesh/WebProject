@@ -87,7 +87,7 @@ namespace WebProject.Controllers
                     if (resault.Succeeded)
                     {
                         if (!string.IsNullOrEmpty(returnUrl) && Url.IsLocalUrl(returnUrl))
-                            Redirect(returnUrl);
+                            return Redirect(returnUrl);
                         return RedirectToAction("index", "Home");
                     }
 
