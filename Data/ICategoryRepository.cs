@@ -8,5 +8,6 @@ namespace Data
 {
     public interface ICategoryRepository : Base.IRepository<Models.Category>
     {
+        Models.Category GetByName(string name);
     }
 }

@@ -24,7 +24,8 @@ internal class DatabaseContext : IdentityDbContext<Models.ApplicationUser, Model
 
         builder.Entity<Models.Category>()
             .HasMany(category => category.Posts)
-            .WithMany(post => post.Categories);
+            .WithOne(post => post.Category)
+            .OnDelete(DeleteBehavior.SetNull).HasForeignKey(f => f.CategoryId);
 
         // Customize the ASP.NET Identity model and override the defaults if needed.
         // For example, you can rename the ASP.NET Identity table names and more.

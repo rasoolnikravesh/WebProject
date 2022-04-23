@@ -20,8 +20,10 @@ namespace WebProject.Controllers
         }
 
         [HttpGet]
-        public IActionResult AddPost()
+        public async Task<IActionResult> AddPost()
         {
+            var category = await UnitOfWork.CategoryRepository.GetAllAsync();
+            ViewData["category"] = category;
             return View();
         }
 

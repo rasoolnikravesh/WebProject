@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,6 +11,12 @@ namespace Data
     {
         internal CategoryRepository(DatabaseContext databaseContext) : base(databaseContext)
         {
+        }
+
+        public Category GetByName(string name)
+        {
+            var data = DatabaseContext.Categories?.Where(x => x.Title == name).SingleOrDefault();
+            return data;
         }
     }
 }

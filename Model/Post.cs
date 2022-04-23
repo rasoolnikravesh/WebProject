@@ -30,6 +30,8 @@ namespace Models
 
         public Models.ApplicationUser? User { get; set; }
 
-        public ICollection<Category>? Categories { get; set; }
+        public Guid? CategoryId { get; set; }
+
+        public Category? Category { get; set; }
     }
 }

@@ -15,15 +15,17 @@ builder.Services.AddAuthorization(op =>
 // add auto mapper
 //builder.Services.AddAutoMapper(typeof(Mappers.AddPostMapperProfile));
 
-builder.Services.AddAutoMapper(am =>
-{
-    am.AddProfile<Mappers.AddPostMapperProfile>();
+//builder.Services.AddAutoMapper(op =>
+//{
+//    op.AddProfile<Mappers.AddPostMapperProfile>(op.GetService<Data.UnitofWork>());
 
-});
+//});
+
+
 
 builder.Services.AddConfigContext(connectionString);
 
-builder.Services.AddTransient<Data.IUnitOfWork, Data.IUnitOfWork>(sp =>
+builder.Services.AddTransient<Data.IUnitOfWork,Data.UnitofWork>(provider =>
 {
     Data.Tools.Options options = new()
     {
@@ -34,11 +36,18 @@ builder.Services.AddTransient<Data.IUnitOfWork, Data.IUnitOfWork>(sp =>
     return new Data.UnitofWork(options: options);
 });
 
+
 builder.Services.AddConfigIdentity();
 
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddTransient(provider => new AutoMapper.MapperConfiguration(cfg =>
+{
+    cfg.AddProfile(new Mappers.AddPostMapperProfile(provider.GetRequiredService<Data.IUnitOfWork>()));
+
+}).CreateMapper());
 
 var app = builder.Build();
 

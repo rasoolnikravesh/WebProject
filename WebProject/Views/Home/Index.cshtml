@@ -30,6 +30,7 @@
                             <h5 class="card-title">@post.Title</h5>
                             <h6 class="card-subtitle mb-2 text-muted">@post.Summary</h6>
                             <p class="card-text">@post.Content</p>
+                            <p>Category: <span style="color:blue;"> @post.Category?.Title</span></p>
                             <small>@post.InsertDateTime.ToString()</small>
                         </div>
                     </div>
