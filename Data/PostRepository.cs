@@ -9,10 +9,11 @@ public class PostRepository : Repository<Models.Post>, IPostRepository
     {
     }
 
-    public IList<Post> GetAllWithCategory()
-    {
-        var posts = DatabaseContext.Posts.Include(x => x.Category).ToList();
 
+
+    public async Task<IList<Post>> GetAllWithCategoryAsync()
+    {
+        var posts = await DatabaseContext.Posts.Include(x => x.Category).ToListAsync();
         return posts;
     }
 

@@ -22,6 +22,8 @@ internal class DatabaseContext : IdentityDbContext<Models.ApplicationUser, Model
             .WithOne(p => p.User)
             .HasForeignKey(f => f.UserId);
 
+        builder.Entity<Models.Post>().HasIndex(p => p.Title).IsUnique();
+
         builder.Entity<Models.Category>()
             .HasMany(category => category.Posts)
             .WithOne(post => post.Category)

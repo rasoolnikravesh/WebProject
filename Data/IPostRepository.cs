@@ -10,5 +10,5 @@ public interface IPostRepository : Base.IRepository<Models.Post>
 {
     IList<Models.Post> GetLast10Posts();
 
-    IList<Models.Post> GetAllWithCategory();
+    Task<IList<Models.Post>> GetAllWithCategoryAsync();
 }

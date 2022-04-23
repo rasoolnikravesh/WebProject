@@ -1,0 +1,18 @@
+﻿@{
+
+}
+@model Post;
+<div class="d-flex flex-column">
+
+    <div class="card p-2 mb-4" style="">
+        <div class="card-body">
+            <h1 class="card-title"><a> @Model.Title</a></h1>
+            <h6 class="card-subtitle mb-2 text-muted">@Model.Summary</h6>
+            <p>@Model.Content</p>
+            <p>Category: <span style="color:blue;"> @Model.Category?.Title</span></p>
+            <small>@Model.InsertDateTime.ToString()</small>
+        </div>
+    </div>
+
+
+</div>
