@@ -120,6 +120,9 @@
   <data name="AddPost" xml:space="preserve">
     <value>Add</value>
   </data>
+  <data name="CategorySubmit" xml:space="preserve">
+    <value>Submit Category </value>
+  </data>
   <data name="Login" xml:space="preserve">
     <value>Login</value>
   </data>

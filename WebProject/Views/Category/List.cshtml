@@ -1,0 +1,48 @@
+﻿@{
+    TempData["Title"] = "Category List";
+    TempData["active"] = "Category";
+}
+@model List<Category>
+<div>
+
+    <h1>List Categories</h1>
+    @{
+
+        if (Model == null)
+        {
+            <h3>No Found Categores</h3>
+        }
+        else
+        {
+            <div>
+                <a asp-controller="Category" asp-action="Add">Add</a>
+            </div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Id</th>
+                        <th scope="col">Title</th>
+                        <th scope="col">Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var category in Model)
+                    {
+
+                        <tr>
+                            <th scope="row">@category.Id</th>
+                            <td>@category.Title</td>
+                            <td>@category.InsertDateTime</td>
+                            <td>
+                                <a asp-action="Delete" asp-controller="Category" asp-route-Id="@category.Id">Delete</a>
+                            </td>
+                        </tr>
+
+                    }
+                </tbody>
+            </table>
+        }
+    }
+
+</div>
+

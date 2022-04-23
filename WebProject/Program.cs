@@ -10,7 +10,6 @@ var connectionString = builder.Configuration.GetConnectionString("ApplicationCon
 builder.Services.AddAuthorization(op =>
 {
     op.AddPolicy("admin", x => x.RequireRole("admin"));
-    
 });
 
 // add auto mapper
@@ -59,7 +58,6 @@ app.UseRouting();
 app.UseAuthentication();
 
 app.UseAuthorization();
-
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");

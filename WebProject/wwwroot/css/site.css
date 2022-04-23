@@ -1,10 +1,9 @@
-body {
+body{
     min-height: 100vh;
-    background-color:darkgray;
 }
 
 
-#btn-back-to-top {
+#btn-back-to-top{
     position: absolute;
     bottom: 20px;
     right: 20px;
