@@ -24,6 +24,7 @@ namespace WebProject.Controllers
         {
             var category = await UnitOfWork.CategoryRepository.GetAllAsync();
             ViewData["category"] = category;
+            ViewBag.Category = category;
             return View();
         }
 

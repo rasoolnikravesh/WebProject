@@ -9,6 +9,7 @@ namespace WebProject.Controllers
     {
         public BlogController(IUnitOfWork unitOfWork) : base(unitOfWork)
         {
+            
         }
 
         public async Task<IActionResult> Index()

@@ -10,6 +10,10 @@ namespace Models;
 // Add profile data for application users by adding properties to the User class
 public class ApplicationUser : IdentityUser<Guid>
 {
+    public ApplicationUser() : base()
+    {
+
+    }
     [Display(ResourceType = typeof(Resources.DataDictionary),
         Name = nameof(Resources.DataDictionary.Name))]
     [MaxLength(Constant.Length.GENERAL_NAME)]
@@ -23,5 +27,7 @@ public class ApplicationUser : IdentityUser<Guid>
     public string LastName { get; set; } = string.Empty;
 
     public virtual ICollection<Post> Posts { get; set; } = default!;
+
+    public ICollection<Permission> Permissions { get; set; } = new List<Permission>();
 }
 

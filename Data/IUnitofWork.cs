@@ -1,4 +1,6 @@
-﻿namespace Data;
+﻿using Data.IRepositories;
+
+namespace Data;
 
 public interface IUnitOfWork : Base.IUnitOfWork
 {
@@ -9,5 +11,10 @@ public interface IUnitOfWork : Base.IUnitOfWork
     // **********
     ICategoryRepository CategoryRepository { get; }
     // **********
+
+    // **********
+    IPermissionRepository PermissionRepository { get; }
+    // **********
+
 }
 

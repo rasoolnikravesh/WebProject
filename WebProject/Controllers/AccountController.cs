@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Models;
+using System.Security.Claims;
 
 namespace WebProject.Controllers
 {
@@ -14,6 +15,7 @@ namespace WebProject.Controllers
         [HttpGet]
         public IActionResult Register()
         {
+            
             return View();
         }
 

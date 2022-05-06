@@ -1,9 +1,7 @@
-﻿using Data.Tools;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Data.IRepositories;
+using Data.Repositores;
+using Data.Repositories;
+using Data.Tools;
 
 namespace Data
 {
@@ -40,6 +38,19 @@ namespace Data
                     _categoryRepository = new CategoryRepository(DatabaseContext);
                 }
                 return _categoryRepository;
+            }
+        }
+        private IPermissionRepository? _permissionRepository;
+
+        public IPermissionRepository PermissionRepository
+        {
+            get
+            {
+                if (_permissionRepository == null)
+                {
+                    _permissionRepository = new PermissionRepository(DatabaseContext);
+                }
+                return _permissionRepository;
             }
         }
     }

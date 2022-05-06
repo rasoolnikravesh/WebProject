@@ -1,20 +1,22 @@
-﻿namespace ViewModels.Account;
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace ViewModels.Account;
 
 public class LoginViewModel
 {
-    [System.ComponentModel.DataAnnotations.Display(ResourceType = typeof(Resources.DataDictionary), Name = nameof(Resources.DataDictionary.Email))]
-    [System.ComponentModel.DataAnnotations.Required]
-    [System.ComponentModel.DataAnnotations.EmailAddress]
-    [System.ComponentModel.DataAnnotations.DataType(System.ComponentModel.DataAnnotations.DataType.EmailAddress)]
+    [Display(ResourceType = typeof(Resources.DataDictionary), Name = nameof(Resources.DataDictionary.Email))]
+    [Required]
+    [EmailAddress]
+    [DataType(DataType.EmailAddress)]
     public string Email { get; set; } = default!;
 
-    [System.ComponentModel.DataAnnotations.Display(ResourceType = typeof(Resources.DataDictionary), Name = nameof(Resources.DataDictionary.Password))]
-    [System.ComponentModel.DataAnnotations.Required]
-    [System.ComponentModel.DataAnnotations.DataType(System.ComponentModel.DataAnnotations.DataType.Password)]
+    [Display(ResourceType = typeof(Resources.DataDictionary), Name = nameof(Resources.DataDictionary.Password))]
+    [Required]
+    [DataType(DataType.Password)]
     public string Password { get; set; } = default!;
 
-    [System.ComponentModel.DataAnnotations.Display(ResourceType = typeof(Resources.DataDictionary),Name = nameof(Resources.DataDictionary.RememberMe))]
-    [System.ComponentModel.DataAnnotations.Required]
+    [Display(ResourceType = typeof(Resources.DataDictionary),Name = nameof(Resources.DataDictionary.RememberMe))]
+    [Required]
     public bool RememberMe { get; set; }
 }
 

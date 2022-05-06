@@ -2,6 +2,7 @@ using Data.Settings;
 using Microsoft.AspNetCore.Components.RenderTree;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
 var connectionString = builder.Configuration.GetConnectionString("ApplicationContextConnection");
@@ -11,15 +12,6 @@ builder.Services.AddAuthorization(op =>
 {
     op.AddPolicy("admin", x => x.RequireRole("admin"));
 });
-
-// add auto mapper
-//builder.Services.AddAutoMapper(typeof(Mappers.AddPostMapperProfile));
-
-//builder.Services.AddAutoMapper(op =>
-//{
-//    op.AddProfile<Mappers.AddPostMapperProfile>(op.GetService<Data.UnitofWork>());
-
-//});
 
 
 
@@ -65,7 +57,7 @@ app.UseStaticFiles();
 
 app.UseRouting();
 app.UseAuthentication();
-
+app.UseMyAuthorization();
 app.UseAuthorization();
 app.MapControllerRoute(
     name: "default",
